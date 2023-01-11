@@ -1,0 +1,52 @@
+\documentclass[lang=cn,12pt, scheme=chinese]{elegantbook}
+
+
+\usepackage{amsmath}
+\usepackage{slashed}
+\usepackage{mathtools}
+\usepackage{cancel}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{positioning, shapes.geometric, arrows.meta}
+\usepackage{ulem}
+%\usepackage{CJKulem}
+\usepackage{xeCJK}
+\usepackage{CJKfntef}
+\usepackage{indentfirst}
+
+
+\title{课程学习笔记}
+% \subtitle{Classic Elegant\LaTeX{} Template}
+
+\author{S.Y. Chen}
+\bioinfo{单位}{Southwest University}
+\bioinfo{时间}{\today}
+% \institute{Southwest University}
+% \date{\today}
+% \version{3.11}
+% \bioinfo{Bio}{Information}
+
+\extrainfo{Victory won\rq t come to us unless we go to it. }
+
+\logo{logo-blue.png}
+\cover{cover.jpg}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+\tableofcontents
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{chapter/LDM.tex}
+\include{chapter/mfc.tex}
+\include{chapter/chapter-3.tex}
+\include{chapter/chapter-4.tex}
+
+\appendix
+\include{Appendix/variational-principle.tex}
+
+\end{document}
