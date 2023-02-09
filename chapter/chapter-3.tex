@@ -8,14 +8,18 @@
 	\item 把核子当成没有内部结构的点粒子；
 \end{enumerate}
 
-\paragraph*{原子核集体波函数$\Psi_0$的理解：}在\uline{\textsl{Hartree}}方法中，集体波函数只表现为单粒子态的直积形式，如下
+\paragraph*{原子核集体波函数$\Psi_0$的理解：}在\uline{\textsl{Hartree}}方法中，集体波函数
+只表现为单粒子态的直积形式，如下
 \begin{equation}
-	\Psi_0(\bm{r}_1,\ \bm{r}_2,\ \bm{r}_3,\cdots,\ \bm{r}_A) = \prod_{i=1}^{A} \phi_{\alpha_i}(\bm{r}_i)
+	\Psi_0(\bm{r}_1,\ \bm{r}_2,\ \bm{r}_3,\cdots,\ \bm{r}_A) = \prod_{i=1}^{A} 
+    \phi_{\alpha_i}(\bm{r}_i)
 \end{equation} 
-在\uline{\textsl{Hartree-Fock}}方法中，集体波函数表现为有个单粒子直积形式的混合，且具有反对称性质，如下
+在\uline{\textsl{Hartree-Fock}}方法中，集体波函数表现为有个单粒子直积形式的混合，且具有反
+对称性质，如下
 \begin{equation}
     \begin{aligned}
-		\Psi_0(\bm{r}_1, \bm{r}_2, \bm{r}_3, \cdots, \bm{r}_A) ={}& \mathcal{A}\left[ \prod_{i=1}^{A} \phi_{\alpha_i}(\bm{r}_i) \right]	\\
+		\Psi_0(\bm{r}_1, \bm{r}_2, \bm{r}_3, \cdots, \bm{r}_A) ={}& \mathcal{A}\left[ 
+        \prod_{i=1}^{A} \phi_{\alpha_i}(\bm{r}_i) \right]	\\
 		={}& 
 		\begin{vmatrix}
 			\phi_1(\bm{r}_1)	&	\phi_1(\bm{r}_2)	&	\phi_1(\bm{r}_3)	&	\cdots	&	\phi_1(\bm{r}_A)	\\
@@ -26,10 +30,14 @@
 		\end{vmatrix}
     \end{aligned}
 \end{equation} 
-	其中，$\mathcal{A}$为反对称化算符，并且包含了归一化系数；$\bm{r}_1,\ \bm{r}_2,\ \cdots,\ \bm{r}_A$表示粒子$1,\ 2,\ \cdots,\ A$的坐标；$\phi_1,\ \phi_2,\ \cdots,\ \phi_A$表示有那么多个能级，也就是粒子可能占据的能级。我们现在考虑三粒子体系的情况，三个粒子占据三个能级，在\textsl{Hartree-Fock}方法中，其集体波函数可表示为
+	其中，$\mathcal{A}$为反对称化算符，并且包含了归一化系数；$\bm{r}_1,\ \bm{r}_2,\ \cdots,
+    \ \bm{r}_A$表示粒子$1,\ 2,\ \cdots,\ A$的坐标；$\phi_1,\ \phi_2,\ \cdots,\ \phi_A$表
+    示有那么多个能级，也就是粒子可能占据的能级。我们现在考虑三粒子体系的情况，三个粒子占
+    据三个能级，在\textsl{Hartree-Fock}方法中，其集体波函数可表示为
 \begin{equation}
     \begin{aligned}
-		\Psi_0(\bm{r}_1, \bm{r}_2, \bm{r}_3) ={}& \mathcal{A}\left[ \prod_{i=1}^{3} \phi_{\alpha_i}(\bm{r}_i) \right]	\\
+		\Psi_0(\bm{r}_1, \bm{r}_2, \bm{r}_3) ={}& \mathcal{A}\left[ \prod_{i=1}^{3} 
+        \phi_{\alpha_i}(\bm{r}_i) \right]	\\
 		={}& \frac{1}{\sqrt{6}} 
 		\begin{vmatrix}
 			\phi_1(\bm{r}_1)	&	\phi_1(\bm{r}_2)	&	\phi_1(\bm{r}_3)	\\
@@ -107,8 +115,69 @@
 \end{figure}
 
 \paragraph*{平均场的迭代求解：}
+平均场下的\textsl{Hartree(-Fock)}方程如下：
+\begin{equation}
+    \begin{aligned}
+        \frac{-\hbar^{2}}{2m_N} \nabla^{2} \phi_{\alpha}(\bm{r}) + V_{H(F)}\left(
+        \{\phi_{i}(\bm{r})\}\right) = \varepsilon_{\alpha}\phi_{\alpha}(\bm{r}) \\ 
+        i = 1, 2, \cdots, A, \quad \alpha = 1, 2, \cdots, \infty
+    \end{aligned}
+    \label{eq:Hartree-Fock}
+\end{equation}
+上式与薛定谔方程唯一不同就是势能变成了关于波函数的非线性函数，
+\begin{equation*} V(\bm{r}) \Longrightarrow V_{H(F)}(\{\phi_{i}(\bm{r})\})
+\end{equation*}
+式\eqref{eq:Hartree-Fock}为非线性方程组，一般用迭代的方法求解。我们先猜测得到一组试探
+波函数${\phi_i^0(\bm{r})}_{i=1}^{A}$，然后我们根据势能与波函数的关系得到初始势场
+$V_{H(F)}^{0}$；完成上述步骤后，我们将试探波函数和初始势场带入式\eqref{eq:Hartree-Fock}，
+求解得到一组新的波函数${\phi_{\alpha}^0(\bm{r})}_{\alpha=1}^{A}$和本征值$\varepsilon_{\alpha}^{(1)}$，
+通过这组新的波函数，我们可以再次生成一个新的势场$V_{H(F)}^{(1)}$；将生成的新势场和新波函数
+再次代入式\eqref{eq:Hartree-Fock}，可得到更新一组的本征波函数和本征能量。通过比较某次迭代
+前后的波函数间的误差小于某一给定值来确定波函数合理
+\begin{equation}
+    \parallel \phi_{\alpha}^{(n-1)} - \phi_{\alpha}^{(n)} \parallel < \text{preset limit}
+    \label{eq:iter-error}
+\end{equation}
+其中，$\parallel \cdots \parallel$表示波函数的模。
 
-
+\uline{关于平均势场和初始波函数形式的选取}：上述平均场方程中，势能具体形式为
+\begin{equation}
+    V_{H(F)}\left( \left\{ \phi_i(\bm{r}) \right\} \right) = \sum_{i \neg j} \int 
+    \phi_i^{\star}(\bm{r}_i^{\prime}) V_{ij}(\bm{r}_i^{\prime}, \bm{r}_j) \phi_{i}(\bm{r}_i^{\prime})
+    \,d\bm{r}_i^{\prime}
+    \label{eq:mean-field}
+\end{equation}
+为寻找到一组合适的平均场，试探波函数可以选取一组零级近似，如费米气体模型单粒子波函数：
+\begin{equation}
+    \phi_i = \sqrt{V^{-1}} \exp{(i \bm{k}_i \cdot \bm{r}_i)}
+    \label{eq:fermi-gas-eigen}
+\end{equation}
+其中，$V$表示原子核的体积。对于二体势$V_{ij}$，可以选用Skyrme力(见下式)或其它形式的两体力
+\begin{equation}
+    V_{skyrme} = \sum_{i<j} v(i, j) + \sum_{i<j<k} v(i, j, k)
+    \label{eq:skyrme-forc}
+\end{equation}
+其中，两体力部分为
+\begin{equation}
+    \begin{aligned}
+        v(1, 2) =& t_0 (1 + x_0 P_{\sigma})\delta(\bm{r}_1 - \bm{r}_2) \\
+            & + t_1\left[ \delta(\bm{r}_1 - \bm{r}_2) \bm{k}^{2}
+              + \bm{k}^{\prime 2}\delta(\bm{r}_1 - \bm{r}_2)\right] / 2 \\
+            & + t_2\bm{k}^{\prime} \cdot \delta(\bm{r}_1 - \bm{r}_2) \bm{k} \\
+            & + {\rm i} W_0(\bm{\sigma}_1 + \bm{\sigma}_2)\cdot \left[ 
+            \bm{k}^{\prime} \times \delta\left( \bm{r}_1 - \bm{r}_2 \right) \bm{k}\right]
+    \end{aligned}
+    \label{eq:skyrme-tow-body-forc}
+\end{equation}
+三体部分为
+\begin{equation}
+    v(1, 2, 3) = t_3 \delta(\bm{r}_1 - \bm{r}_2) \delta(\bm{r}_2 - \bm{r}_3)
+    \label{eq:skyrm-three-body-forc}
+\end{equation}
+式中，$\bm{k} = \bm{p}/\hbar = (\nabla_{1} - \Delta_{2}) / (2{\rm i})$是向右作用的相对动量
+算符，$\bm{k}^{\prime} = \bm{p}/\hbar = (\nabla_{2} - \Delta_{1}) / (2{\rm i})$是向左相对
+动量算符；$P_{\sigma} = (1 + \bm{\sigma}_1 \cdot \bm{\sigma}_2) / 2$是自旋交换算符。上式
+Skyrme力有6个可调参数$t_0$、$t_1$、$t_2$、$t_3$、$x_0$和$W_0$。
 
 \section{Woods-Saxon波函数用球谐振子基展开}
 单核子薛定谔方程中的哈密顿量为：
