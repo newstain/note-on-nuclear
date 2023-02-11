@@ -142,7 +142,7 @@ $V_{H(F)}^{0}$；完成上述步骤后，我们将试探波函数和初始势场
 
 \uline{关于平均势场和初始波函数形式的选取}：上述平均场方程中，势能具体形式为
 \begin{equation}
-    V_{H(F)}\left( \left\{ \phi_i(\bm{r}) \right\} \right) = \sum_{i \neg j} \int 
+    V_{H(F)}\left( \left\{ \phi_i(\bm{r}) \right\} \right) = \sum_{i \neq j} \int 
     \phi_i^{\star}(\bm{r}_i^{\prime}) V_{ij}(\bm{r}_i^{\prime}, \bm{r}_j) \phi_{i}(\bm{r}_i^{\prime})
     \,d\bm{r}_i^{\prime}
     \label{eq:mean-field}
@@ -174,8 +174,8 @@ $V_{H(F)}^{0}$；完成上述步骤后，我们将试探波函数和初始势场
     v(1, 2, 3) = t_3 \delta(\bm{r}_1 - \bm{r}_2) \delta(\bm{r}_2 - \bm{r}_3)
     \label{eq:skyrm-three-body-forc}
 \end{equation}
-式中，$\bm{k} = \bm{p}/\hbar = (\nabla_{1} - \Delta_{2}) / (2{\rm i})$是向右作用的相对动量
-算符，$\bm{k}^{\prime} = \bm{p}/\hbar = (\nabla_{2} - \Delta_{1}) / (2{\rm i})$是向左相对
+式中，$\bm{k} = \bm{p}/\hbar = (\nabla_{1} - \nabla_{2}) / (2{\rm i})$是向右作用的相对动量
+算符，$\bm{k}^{\prime} = \bm{p}/\hbar = (\nabla_{2} - \nabla_{1}) / (2{\rm i})$是向左相对
 动量算符；$P_{\sigma} = (1 + \bm{\sigma}_1 \cdot \bm{\sigma}_2) / 2$是自旋交换算符。上式
 Skyrme力有6个可调参数$t_0$、$t_1$、$t_2$、$t_3$、$x_0$和$W_0$。
 
