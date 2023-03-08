@@ -1,0 +1,33 @@
+\chapter{Math Tools}
+
+\section{Linear Algebra}
+
+\subsection{The trace of matrix}
+The trace of matrix is the sum of diagonal elements of matrix. We have the property:\\
+1. Linear property:
+\begin{equation}
+    {\rm Tr}(A+B) = {\rm Tr}(A) +{\rm Tr}(B)  \label{tracelinear}
+\end{equation}
+2. Multiplicity property:
+\begin{equation}
+    {\rm Tr}(cA) = c{\rm Tr}(A)  \label{tracemulti}
+\end{equation}
+3.Cyclic property:
+\begin{equation}
+  \begin{aligned}
+    {\rm Tr}(AB) =& {\rm Tr}(BA)\\  \label{tracecyclic}
+    {\rm Tr}[A,B]C =& {\rm Tr}A[B,C]
+  \end{aligned}
+\end{equation}
+
+
+\subsection{The Jacobi identity}
+\begin{theorem}{The Jacobi identity}{}
+  For three matrices $A, B$ and $C$, we have the identical relation
+  \begin{equation}
+    \left[A, [B,C]\right] + \left[C, [A,B]\right] + \left[B, [C,A]\right] = 0 \label{Jacobidentity}
+  \end{equation}
+\end{theorem}
+
+\section{Numerical Methods}
+\subsection{Numerical differential method}
