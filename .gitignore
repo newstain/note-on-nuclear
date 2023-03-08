@@ -13,7 +13,6 @@
 .*.lb
 .DS_Store
 clean.bat
-*.pdf
 *.dates
 
 ## Intermediate documents:
