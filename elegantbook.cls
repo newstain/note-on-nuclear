@@ -8,7 +8,7 @@
 %%%%%%%%%%%%%%%%%%%%%
 % % !Mode:: "TeX:UTF-8"
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{elegantbook}[2022/08/15 v4.4 ElegantBook document class]
+\ProvidesClass{elegantbook}[2022/12/31 v4.5 ElegantBook document class]
 
 
 %%%
@@ -957,9 +957,16 @@
           \textcolor{third}{$\spadesuit$}};}},
     ELEGANT@title/.code n args={2}
       {
-        \ifblank{#2}
-          {\tcbset{title={\csname #1name\endcsname~\thetcbcounter}}}
-          {\tcbset{title={\csname #1name\endcsname~\thetcbcounter\ (#2)}}}
+
+        \tcbset
+          {
+            title=
+              {
+                \csname #1name\endcsname~%
+                \ifdef{\thetcbcounter}{\thetcbcounter}{}%
+                \ifblank{#2}{}{\ (#2)}
+              }
+          }
       },
     ELEGANT@label/.code n args={2}
       {
